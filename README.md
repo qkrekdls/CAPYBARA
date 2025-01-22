@@ -29,7 +29,7 @@ To respect privacy and avoid sensitive content, the current version uses **capyb
 ---
 ## Installation
 To view this project, visit the following link:  
-[Capybara Fan Page - Live Demo]()
+[Capybara Fan Page - Live Demo](https://qkrekdls.github.io/CAPYBARA/)
 
 ---
 
