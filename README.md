@@ -37,9 +37,7 @@ To view this project, visit the following link:
 
 - **Placeholder Images**:
 Current images are temporary and intended for demonstration purposes. Original content has been replaced for privacy reasons.
-- **Further Improvements**:
-Adding additional subpages for more functionality.
-Polishing UI/UX for enhanced accessibility.
+
 
 ---
 
