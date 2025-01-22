@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BARA'S PLAYLISTS</title>
+  <style>
+    body {
+        background-color: #739439;
+        color: #3f3f3e;
+        padding: 20px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .caption-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .caption-box {
+        background-color: #738e2f;
+        border: 3px solid #343f34;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        font-size: 24px;
+        color: #333;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .playlist-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #738e2f;
+        border: 3px solid #343f34;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0. 0. 0. 0.2);
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .playlist-item {
+        display: flex;
+        align-items: center;
+        background-color: #59733f;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .playlist-item img {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        margin-right: 15px;
+    }
+    .playlist-item h3 {
+        font-size: 15px;
+        margin: 0;
+    }
+    .button-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    button {
+      background-color: #59733f;
+      color: white;
+      border: none;
+      width: 100px;
+      height: 45px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+    .button-container button:nth-child(3) {
+      min-width: 140px;
+    }
+    button:hover {
+        background-color: #343f34;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+    }
+    .buttons button:active {
+        transform: translate(2px);
+    }
+    html, body {
+        height: 100%;
+        overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+    <div class="caption-container">
+        <div class="caption-box">CAPYPARA'S PLAYLIST</div>
+    </div>
+    <div class="playlist-container">
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+        <div class="playlist-item">
+            <img src="capy.webp" alt="Album Cover">
+            <h3>카피바라 송&emsp;-&emsp;카피바라</h3>
+        </div>
+    </div>
+    <div class="button-container">
+        <button onclick="addToPlaylist('spotify')">Spotify</button>
+        <button onclick="addToPlaylist('melon')">Melon</button>
+        <button onclick="addToPlaylist('apple')">Apple Music</button>
+    </div>
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+        function addToPlaylist(platform, id) {
+            let url = '';
+            if(platform === 'spotify') {
+                url = 'https://open.spotify.com/playlist/0V9kjwWewcgmusgFuonsxU?si=_pgez5PZRmCk03jdC0IpdQ&pi=a-t66fgHOdQaSC';
+            } else if (platform === 'melon') {
+                url = 'https://kko.kakao.com/EC20d62q4q';
+            } else if (platform === 'apple') {
+                url = 'https://music.apple.com/kr/album/capybara/1667623158?i=1667623278';
+            }
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

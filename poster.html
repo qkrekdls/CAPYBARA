@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Event Poster</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100dvh;
+      background-color: #F6C2C4;
+    }
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .container img {
+      position: absolute;
+      width: 100vw; 
+      height: 100dvh; 
+      object-fit: cover; 
+      object-position: center; 
+      transition: transform 0.5s ease; 
+    }
+    .buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .buttons button {
+      background-color: #738e2f;
+      color: #c0e6c4; 
+      border: none;
+      padding: 10px; 
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 30%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      outline: none;
+      display: flex; 
+    }
+    .buttons button:hover {
+      background-color: #343f34; 
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px); 
+    }
+    .buttons button:active {
+      transform: translateY(2px);
+    }
+    @media (max-width: 768px) {
+    .container img {
+        width: 100vw;
+        height: 100dvh;
+        object-fit: cover;
+        object-position: center; 
+      }
+    }
+  </style>
+</head>
+  <body>
+    <div class="container">
+      <img id="image1" src="capyposter.jpeg" alt="poster1">
+      <img id="image2" src="capyposter2.jpeg" alt="poster2" style="display: none;">
+      <div class="buttons">
+        <button onclick="prevImage()">&#60;</button>
+        <button onclick="nextImage()">&#62;</button>
+      </div>
+    </div>
+    <script>
+      let currentImageIndex = 1; 
+
+      function nextImage() {
+        if (currentImageIndex === 1) {
+          document.getElementById('image1').style.transform = 'translateX(-100%)';
+          document.getElementById('image2').style.display = 'block'; 
+          document.getElementById('image2').style.transform = 'translateX(0)'; 
+          currentImageIndex = 2; 
+        }
+      }
+
+      function prevImage() {
+        if (currentImageIndex === 2) {
+          document.getElementById('image2').style.transform = 'translateX(100%)'; 
+          document.getElementById('image1').style.display = 'block'; 
+          document.getElementById('image1').style.transform = 'translateX(0)'; 
+          currentImageIndex = 1; 
+        }
+      }
+    </script>
+  </body>
+  </html>

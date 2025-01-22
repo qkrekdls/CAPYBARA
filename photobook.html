@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cartoon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'hjy4xcf',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: radial-gradient(ellipse, #C79A9D 20%, #8E5C71 40%, #1B2E43 80%, #151C2A 100%);
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      perspective: 1000px;
+      position: relative; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+      top: -80px;
+    }
+
+    .carousel-item {
+    position: absolute;
+    width: 300px; 
+    height: auto;
+    transform-origin: center;
+    transform: scale(0.8) translateZ(0);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 0; 
+    opacity: 0.5; 
+    }
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 1px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    /* 전체 컨테이너 */
+    .caption-container {
+      position: fixed; 
+      bottom: 3%; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      width: 80%; 
+      max-width: 600px;
+      font-family: 'yoon-px-pixman', sans-serif;
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+    }
+
+    /* 이름 박스 */
+    .name-box {
+      position: absolute;
+      top: -36px;
+      left: -12px;
+      background-color: #ffdce5; 
+      color: #a9446f; 
+      font-size: 16px;
+      font-weight: bold;
+      padding: 5px 15px; 
+      border: 2px solid #f59db1; 
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /
+    }
+
+    /* 하단 텍스트 박스 */
+    .caption-box {
+      background-color: #ffdce5; 
+      border: 3px solid #ffffff; 
+      border-radius: 10px; 
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+      padding: 15px; 
+      padding: 10px; 
+      width: 100%; 
+      height: 60px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .triangle.outer {
+      /* 바깥 삼각형 */
+      position: absolute;
+      width: 20px; 
+      height: 10px;
+      background-color: #632809; 
+      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      bottom: 8px; 
+      right: 10px; 
+    }
+
+    .triangle.inner {
+      /* 안쪽 삼각형 */
+      position: absolute;
+      width: 13px; 
+      height: 6.5px;
+      background-color: #F77797;
+      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      top: 1.5px; 
+      left: 3.5px; 
+    }
+
+    /* 가운데 카드 (가장 앞에 위치) */
+    .carousel-item.active {
+    z-index: 2;
+    opacity: 1; 
+    transform: translateX(0) rotateY(0deg) scale(1); 
+    }
+    /* 왼쪽 카드 */
+    .carousel-item.left {
+    z-index: 1;
+    transform: translateX(-100%) rotateY(30deg) scale(0.9); 
+    }
+    /* 오른쪽 카드 */
+    .carousel-item.right {
+    z-index: 1;
+    transform: translateX(100%) rotateY(-30deg) scale(0.9); 
+    }
+
+    @media (max-width: 768px) {
+      /* 기본 상태 */
+      .carousel-item {
+      position: absolute;
+      width: 70%; 
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="carousel-item"><img src="capy1.jpg" alt="Image 1"></div>
+    <div class="carousel-item"><img src="capy2.jpg" alt="Image 2"></div>
+    <div class="carousel-item"><img src="capy3.jpeg" alt="Image 3"></div>
+  </div>
+  <!-- 하단 고정 박스 -->
+  <div class="caption-container">
+    <div class="name-box">CAPYBARA</div>
+    <div class="caption-box">MY CHILL PHOTO
+      <div class="triangle outer">
+        <div class="triangle inner"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.carousel-item');
+      let currentIndex = 0;
+
+      let isDragging = false;
+      let startX = 0;
+      let endX = 0;
+
+      function updateCarousel() {            
+        items.forEach((item, index) => {
+          item.classList.remove('active', 'left', 'right');
+          if (index === currentIndex) {
+              item.classList.add('active');
+          } else if (index === (currentIndex - 1 + items.length) % items.length) {
+              item.classList.add('left');
+          } else if (index === (currentIndex + 1) % items.length) {
+              item.classList.add('right');
+          }
+        });
+      }
+
+      function handleNext() {
+          currentIndex = (currentIndex + 1) % items.length;
+          updateCarousel();
+      }
+
+      function handlePrev() {
+          currentIndex = (currentIndex - 1 + items.length) % items.length;
+          updateCarousel();
+      }
+
+      const container = document.querySelector('.container');
+
+      // 드래그 동작
+      container.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          startX = e.clientX;
+      });
+
+      container.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          endX = e.clientX;
+      });
+
+      container.addEventListener('mouseup', () => {
+          if (!isDragging) return;
+          isDragging = false;
+          if (startX > endX + 50) handleNext();
+          else if (startX < endX - 50) handlePrev();
+      });
+
+      // 스크롤 이벤트
+      document.addEventListener('wheel', (e) => {
+        const scrollThreshold = 100; 
+        if (e.deltaX > scrollThreshold) {
+          handleNext(); 
+        } else if (e.deltaX < -scrollThreshold) {
+          handlePrev(); 
+        }
+      });
+
+      document.querySelector('.container').addEventListener('touchstart', (e) => {
+          startX = e.touches[0].pageX; 
+      });
+
+      document.querySelector('.container').addEventListener('touchmove', (e) => {
+          endX = e.touches[0].pageX;
+      });
+
+      document.querySelector('.container').addEventListener('touchend', () => {
+          if (startX > endX + 50) { 
+          handleNext();
+          } else if (startX < endX - 50) { 
+          handlePrev();
+          }
+      });
+      // 초기화
+      updateCarousel();
+    }); 
+  </script>
+</body>
+</html>
